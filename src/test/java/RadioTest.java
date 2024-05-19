@@ -1,11 +1,11 @@
-import org.example.RadioService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.example.Radio;
 
-public class RadioServiceTest {
+public class RadioTest {
     @Test
     public void shouldNotSetRadioStationNoAboveMax() {
-        RadioService radio = new RadioService();
+        Radio radio = new Radio();
         radio.next();
         int expected = 1;
         int actual = radio.getCurrStationNo();
@@ -15,7 +15,7 @@ public class RadioServiceTest {
 
     @Test
     public void shouldNotSetRadioStationNoBelowMin() {
-        RadioService radio = new RadioService();
+        Radio radio = new Radio();
         radio.prev();
         int expected = 9;
         int actual = radio.getCurrStationNo();
@@ -25,7 +25,7 @@ public class RadioServiceTest {
 
     @Test
     public void shouldNotSetVolumeAboveMax() {
-        RadioService radio = new RadioService();
+        Radio radio = new Radio();
         radio.increaseVolume();
         int expected = 1;
         int actual = radio.getCurrVolume();
@@ -35,7 +35,7 @@ public class RadioServiceTest {
 
     @Test
     public void shouldNotSetVolumeBelowMin() {
-        RadioService radio = new RadioService();
+        Radio radio = new Radio();
         radio.demotionVolume();
         int expected = 0;
         int actual = radio.getCurrVolume();
