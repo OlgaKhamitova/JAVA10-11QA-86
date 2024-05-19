@@ -36,16 +36,12 @@ public class Radio {
     public void increaseVolume() {
         if (currVolume < maxVolume) {
             currVolume = currVolume + 1;
-        } else {
-            currVolume = maxVolume;
         }
     }
 
-    public void demotionVolume() {
+    public void decreaseVolume() {
         if (currVolume > minVolume) {
             currVolume = currVolume - 1;
-        } else {
-            currVolume = minVolume;
         }
     }
 }
