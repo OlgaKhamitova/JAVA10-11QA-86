@@ -1,47 +1,63 @@
 package org.example;
 
 public class Radio {
-    private int currStationNo;
-    private int currVolume;
+    private int currentStationNumber;
+    private int currentVolume;
     private int maxStationNumber = 9;
     private int minStationNumber = 0;
     private int maxVolume = 100;
     private int minVolume = 0;
 
-    public int getCurrStationNo() {
-        return currStationNo;
+    public int getCurrentStationNumber() {
+
+        return currentStationNumber;
     }
 
-    public int getCurrVolume() {
-        return currVolume;
+    public int getCurrentVolume() {
+        return currentVolume;
     }
 
     public void next() {
-        if (currStationNo == maxStationNumber) {
-            currStationNo = minStationNumber;
+        if (currentStationNumber == maxStationNumber) {
+            currentStationNumber = minStationNumber;
         } else {
-            currStationNo = currStationNo + 1;
+            currentStationNumber = currentStationNumber + 1;
         }
 
     }
 
     public void prev() {
-        if (currStationNo == minStationNumber) {
-            currStationNo = maxStationNumber;
+        if (currentStationNumber == minStationNumber) {
+            currentStationNumber = maxStationNumber;
         } else {
-            currStationNo = currStationNo - 1;
+            currentStationNumber = currentStationNumber - 1;
         }
     }
 
     public void increaseVolume() {
-        if (currVolume < maxVolume) {
-            currVolume = currVolume + 1;
+        if (currentVolume < maxVolume) {
+            currentVolume = currentVolume + 1;
         }
     }
 
     public void decreaseVolume() {
-        if (currVolume > minVolume) {
-            currVolume = currVolume - 1;
+        if (currentVolume > minVolume) {
+            currentVolume = currentVolume - 1;
         }
+    }
+
+    public void setCurrentVolume(int newCurrentVolume) {
+        if (newCurrentVolume < minVolume || newCurrentVolume > maxVolume) {
+            return;
+        }
+        currentVolume = newCurrentVolume;
+    }
+
+    public void setCurrentStationNumber(int newCurrentStationNumber) {
+        if (newCurrentStationNumber < minStationNumber || newCurrentStationNumber > maxStationNumber) {
+            return;
+        }
+
+        currentStationNumber = newCurrentStationNumber;
     }
 }
