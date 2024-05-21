@@ -170,16 +170,27 @@ public class RadioTest {
     }
 
     @Test
-    public void test_Constructor_RadioStation() {
-        Radio radio = new Radio(10);
-        Assertions.assertEquals(0, radio.getCurrentStationNumber());
+    public void test_Constructor_RadioStation_Max() {
+        int stationCount = 10;
+        Radio radio = new Radio(stationCount);
+        radio.setCurrentStationNumber(stationCount - 1);
+        radio.next();
+        int expected = 0;
+        int actual = radio.getCurrentStationNumber();
+
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void test_Constructor_RadioStation_AboveMax() {
-        Radio radio = new Radio(15);
-        Assertions.assertEquals(0, radio.getCurrentStationNumber());
+        int stationCount = 15;
+        Radio radio = new Radio(stationCount);
+        radio.setCurrentStationNumber(stationCount - 1);
+        radio.next();
+        int expected = 0;
+        int actual = radio.getCurrentStationNumber();
 
+        Assertions.assertEquals(expected, actual);
     }
 
 }
