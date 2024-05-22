@@ -171,11 +171,12 @@ public class RadioTest {
 
     @Test
     public void test_Constructor_RadioStation_Max() {
-        int stationCount = 10;
+        int maxStationNumber = 14;
+        int stationCount = 15;
         Radio radio = new Radio(stationCount);
-        radio.setCurrentStationNumber(stationCount - 1);
+        radio.setCurrentStationNumber(stationCount - 2);
         radio.next();
-        int expected = 0;
+        int expected = maxStationNumber;
         int actual = radio.getCurrentStationNumber();
 
         Assertions.assertEquals(expected, actual);
@@ -192,6 +193,29 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void test_Constructor_Prev_If_CurrentStation_InAllowedRange() {
+        int stationCount = 15;
+        int currentStationNumber = 14;
+        Radio radio = new Radio(stationCount);
+        radio.setCurrentStationNumber(currentStationNumber);
+        radio.prev();
+        int expected = 13;
+        int actual = radio.getCurrentStationNumber();
 
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void test_Constructor_Prev_If_CurrentStation_BelowMin() {
+        int stationCount = 11;
+        int currentStationNumber = 0;
+        Radio radio = new Radio(stationCount);
+        radio.setCurrentStationNumber(currentStationNumber);
+        radio.prev();
+        int expected = 10;
+        int actual = radio.getCurrentStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
 
