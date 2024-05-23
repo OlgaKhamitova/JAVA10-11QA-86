@@ -1,5 +1,13 @@
 package org.example;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+
 public class Radio {
     private int currentStationNumber;
     private int currentVolume;
@@ -8,13 +16,8 @@ public class Radio {
     private int maxVolume = 100;
     private int minVolume = 0;
 
-    public int getCurrentStationNumber() {
-
-        return currentStationNumber;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
+    public Radio(int stationCount) {
+        this.maxStationNumber = stationCount - 1;
     }
 
     public void next() {
@@ -46,18 +49,18 @@ public class Radio {
         }
     }
 
+    public void setCurrentStationNumber(int newCurrentStationNumber) {
+        if (newCurrentStationNumber < minStationNumber || newCurrentStationNumber > maxStationNumber) {
+            return;
+        }
+        currentStationNumber = newCurrentStationNumber;
+    }
     public void setCurrentVolume(int newCurrentVolume) {
         if (newCurrentVolume < minVolume || newCurrentVolume > maxVolume) {
             return;
         }
         currentVolume = newCurrentVolume;
     }
-
-    public void setCurrentStationNumber(int newCurrentStationNumber) {
-        if (newCurrentStationNumber < minStationNumber || newCurrentStationNumber > maxStationNumber) {
-            return;
-        }
-
-        currentStationNumber = newCurrentStationNumber;
-    }
 }
+
+
